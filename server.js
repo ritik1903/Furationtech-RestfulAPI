@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json())
 
 //Routes
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.send('Hello Node API')
 })
 
@@ -16,7 +16,26 @@ app.get('/item', (req, res) => {
     res.send('Choose an item')
 })
 
-app.post('/product', async(req, res) => {
+app.get('/items', async(req, res) => {
+    try{
+        const items = await Item.find({});
+        res.status(200).json(items);
+    }catch(err){
+        res.status(500).json({message : error.message})
+    }
+})
+
+app.get('/items/:id', async(req,res) => {
+    try{
+        const {id} = req.params;
+        const item = await Item.findById(id);
+        res.status(200).json(item);
+    }catch(err){
+        res.status(500).json({message : error.message})
+    }
+})
+
+app.post('/items', async(req, res) => {
     try{
         const item = await Item.create(req.body)
         res.status(200).json(item);
@@ -25,6 +44,10 @@ app.post('/product', async(req, res) => {
         res.status(500).json({message: error.message})
     }
 })
+
+
+//Update and existing item by its id
+
 
 mongoose.connect('mongodb+srv://pawarsubham438:lzIXGQLrzV90Krpz@cluster6.3luznbl.mongodb.net/mernstackapi?retryWrites=true&w=majority')
 .then(() => {
