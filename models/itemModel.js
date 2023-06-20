@@ -1,5 +1,7 @@
 const mongoose  = require('mongoose');
 
+
+//Creating the Schema
 const itemSchema = mongoose.Schema(
     {
         name:{
@@ -27,4 +29,6 @@ const itemSchema = mongoose.Schema(
 
 const Item = mongoose.model('Item', itemSchema);
 
+
+//Export the Schema
 module.exports = Item;
