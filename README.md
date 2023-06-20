@@ -9,7 +9,7 @@
 # Assignment - REST API
 
 REST API complete with user accounts and authentication.
- building a RESTful API using Node.js and Express.js implementing JWT (JSON Web Token)
+ Building a Booking store RESTful API app  using Node.js and Express.js implementing JWT (JSON Web Token)
 authentication. The API should allow users to create, read, update, and delete tasks.
 
 Demo : https://node-rest-api-todo.glitch.me
